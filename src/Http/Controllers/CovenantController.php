@@ -627,6 +627,12 @@ class CovenantController extends Controller
 
 
                 $covenantDetails = [];
+                $request->validate([
+                    'description' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'],
+                    'comments' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'],
+                    'targetValue' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'],
+                ]);
+                
                 $covenantDetails['id'] = $covenant->id;
                 $covenantDetails['complianceId'] = $covenant->complianceId;
                 $covenantDetails['type'] = $covenant->type;
