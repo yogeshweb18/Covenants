@@ -10,6 +10,7 @@ use Axistrustee\ComplianceOverview\Models\ComplianceReminder;
 use Axistrustee\ComplianceOverview\Http\Controllers\ComplianceController;
 use Illuminate\Support\Facades\Mail;
 use DB;
+use Illuminate\Support\Facades\Validator;
 
 class CovenantController extends Controller
 {
@@ -632,7 +633,7 @@ class CovenantController extends Controller
                     'comments' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'],
                     'targetValue' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s]+$/'],
                 ]);
-                
+
                 $covenantDetails['id'] = $covenant->id;
                 $covenantDetails['complianceId'] = $covenant->complianceId;
                 $covenantDetails['type'] = $covenant->type;
