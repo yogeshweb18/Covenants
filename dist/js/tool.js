@@ -2736,10 +2736,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nova_components_Covenants_resources_js_pages_MarkActive_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue */ "./resources/js/pages/MarkActive.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
 
@@ -2770,7 +2766,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     Mark: _nova_components_Covenants_resources_js_pages_MarkActive_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   props: ['loadPage', 'viewOnly', 'isApprover'],
-  methods: _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({
+  methods: {
     populateDatatable: function populateDatatable() {
       var _this = this;
       setTimeout(function () {
@@ -2958,66 +2954,72 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
           _this2.isModalVisible = true;
         }
       });
-    }
-  }, "view", function view(id) {
-    var _this3 = this;
-    Nova.request().post('/nova-vendor/covenants/resolution', {
-      'id': id
-    }).then(function (response) {
-      if (response.data.status == 'success') {
-        _this3.viewcompliance = response.data.instance;
-        _this3.isModalVisible = true;
+    },
+    // view(id) {
+    //       Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
+    //       .then(response => {
+    //           if(response.data.status == 'success') {
+    //             this.viewcompliance = response.data.instance;
+    //             this.isModalVisible = true;
+    //           }            
+    //       });
+    //     },
+    submitForApproval: function submitForApproval(id) {
+      var ids = [id];
+      Nova.request().post('/nova-vendor/covenants/submitForApprovalActive', {
+        'id': ids
+      }).then(function (response) {
+        if (response.data.success) {
+          location.reload();
+        }
+      });
+    },
+    multiSubmitForApproval: function multiSubmitForApproval() {
+      var ids = [];
+      jquery__WEBPACK_IMPORTED_MODULE_6___default()("input[type='checkbox'][name='checkApproval[]']:checked").each(function () {
+        ids.push(jquery__WEBPACK_IMPORTED_MODULE_6___default()(this).val());
+      });
+      if (ids.length == 0) {
+        alert('No record is selected for this action.');
+        return false;
       }
-    });
-  }), "submitForApproval", function submitForApproval(id) {
-    var ids = [id];
-    Nova.request().post('/nova-vendor/covenants/submitForApprovalActive', {
-      'id': ids
-    }).then(function (response) {
-      if (response.data.success) {
-        location.reload();
+      Nova.request().post('/nova-vendor/covenants/submitForApprovalActive', {
+        'id': ids
+      }).then(function (response) {
+        if (response.data.success) {
+          location.reload();
+        }
+      });
+    },
+    mark: function mark(status, id) {
+      this.approvalData = [id];
+      this.approvalStatus = status;
+      this.isMarkVisible = true;
+    },
+    multiMark: function multiMark(status) {
+      var temp = [];
+      jquery__WEBPACK_IMPORTED_MODULE_6___default()("input[type='checkbox'][name='checkApproval[]']:checked").each(function () {
+        temp.push(jquery__WEBPACK_IMPORTED_MODULE_6___default()(this).val());
+      });
+      this.approvalData = temp;
+      this.approvalStatus = status;
+      this.isMarkVisible = true;
+    },
+    closeModal: function closeModal() {
+      this.isModalVisible = false;
+    },
+    closeMark: function closeMark() {
+      this.isMarkVisible = false;
+    },
+    selectAll: function selectAll(e) {
+      var table = jquery__WEBPACK_IMPORTED_MODULE_6___default()('#covenant-list').DataTable();
+      if (jquery__WEBPACK_IMPORTED_MODULE_6___default()('#checkAll').is(":checked")) {
+        table.rows().select();
+      } else {
+        table.rows().deselect();
       }
-    });
-  }), "multiSubmitForApproval", function multiSubmitForApproval() {
-    var ids = [];
-    jquery__WEBPACK_IMPORTED_MODULE_6___default()("input[type='checkbox'][name='checkApproval[]']:checked").each(function () {
-      ids.push(jquery__WEBPACK_IMPORTED_MODULE_6___default()(this).val());
-    });
-    if (ids.length == 0) {
-      alert('No record is selected for this action.');
-      return false;
     }
-    Nova.request().post('/nova-vendor/covenants/submitForApprovalActive', {
-      'id': ids
-    }).then(function (response) {
-      if (response.data.success) {
-        location.reload();
-      }
-    });
-  }), "mark", function mark(status, id) {
-    this.approvalData = [id];
-    this.approvalStatus = status;
-    this.isMarkVisible = true;
-  }), "multiMark", function multiMark(status) {
-    var temp = [];
-    jquery__WEBPACK_IMPORTED_MODULE_6___default()("input[type='checkbox'][name='checkApproval[]']:checked").each(function () {
-      temp.push(jquery__WEBPACK_IMPORTED_MODULE_6___default()(this).val());
-    });
-    this.approvalData = temp;
-    this.approvalStatus = status;
-    this.isMarkVisible = true;
-  }), "closeModal", function closeModal() {
-    this.isModalVisible = false;
-  }), "closeMark", function closeMark() {
-    this.isMarkVisible = false;
-  }), "selectAll", function selectAll(e) {
-    var table = jquery__WEBPACK_IMPORTED_MODULE_6___default()('#covenant-list').DataTable();
-    if (jquery__WEBPACK_IMPORTED_MODULE_6___default()('#checkAll').is(":checked")) {
-      table.rows().select();
-    } else {
-      table.rows().deselect();
-    }
-  }),
+  },
   created: function created() {
     this.populateDatatable();
   },
