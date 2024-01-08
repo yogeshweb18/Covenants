@@ -48,7 +48,7 @@
       </table>
       <div style="padding-top:30px;" v-if="isApprover == 1"><button class="flex-shrink-0 shadow rounded focus:outline-none ring-primary-200 dark:ring-gray-600 focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-2 h-9 text-sm flex-shrink-0" @click.prevent="multiMark('Approved')">Approve</button> <button class="flex-shrink-0 shadow rounded focus:outline-none ring-primary-200 dark:ring-gray-600 focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-2 h-9 text-sm flex-shrink-0" @click.prevent="multiMark('Rejected')">Reject</button>
       </div>
-      <div style="padding-top:30px;" v-else-if="viewOnly != 1"><button class="flex-shrink-0 shadow rounded focus:outline-none ring-primary-200 dark:ring-gray-600 focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-2 h-9 text-sm flex-shrink-0" @click.prevent="multiSubmitForApproval()">Submit For Approval</button>
+      <div style="padding-top:30px;" v-else-if="viewOnly == 1"><button class="flex-shrink-0 shadow rounded focus:outline-none ring-primary-200 dark:ring-gray-600 focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-2 h-9 text-sm flex-shrink-0" @click.prevent="multiSubmitForApproval()">Submit For Approval</button>
       </div>
     </div>
     <div id="viewModal">
