@@ -86,6 +86,8 @@ export default {
     return {
       covenants:[],
       viewCovenant: {},
+      viewOnly: 1,
+      isApprover: 0,
       viewcompliance: {},
       isModalVisible: false,
       isMarkVisible: false,
