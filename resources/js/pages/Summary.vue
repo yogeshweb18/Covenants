@@ -390,29 +390,29 @@ export default {
    
   },
 }
-function format(d) {
-        return (
-            '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;width:100%">' +
-            '<thead><tr><th>Description</th><th>Inconsistency Treatment</th><th>Comments</th><th>ISIN</th></tr></thead>'+
-            '<tbody>' +
-            '<tr>' +
-            '<td>' +
-            d.description +
-            '</td>' +
-            '<td>' +
-            d.inconsistencyTreatment +
-            '</td>' +
-            '<td>' +
-            d.comments +
-            '</td>' +
-            '<td>' +
-            d.isins +
-            '</td>' +
-            '</tr>' +
-            '</tbody>' +
-            '</table>'
-        );
-    }
+// function format(d) {
+//         return (
+//             '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;width:100%">' +
+//             '<thead><tr><th>Description</th><th>Inconsistency Treatment</th><th>Comments</th><th>ISIN</th></tr></thead>'+
+//             '<tbody>' +
+//             '<tr>' +
+//             '<td>' +
+//             d.description +
+//             '</td>' +
+//             '<td>' +
+//             d.inconsistencyTreatment +
+//             '</td>' +
+//             '<td>' +
+//             d.comments +
+//             '</td>' +
+//             '<td>' +
+//             d.isins +
+//             '</td>' +
+//             '</tr>' +
+//             '</tbody>' +
+//             '</table>'
+//         );
+//     }
 </script>
 
 <style>
