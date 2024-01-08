@@ -157,6 +157,9 @@ export default {
             order: [[6, 'asc']],
           
           rowCallback(row, data) {
+            $(row).on('click', '.view-placeholder',() => {
+                      self.view(data.covenant_id);
+              });
               $(row).on('click', '.resolve-placeholder',() => {
                 self.view(data.id);
               });
@@ -286,7 +289,15 @@ export default {
             )
             .draw();
     },
-
+    view(id) {
+        Nova.request().post('/nova-vendor/covenants/view',{'id':id})
+        .then(response => {
+            if(response.data.status == 'success') {
+              this.viewCovenant = response.data.covenant;
+              this.isModalVisible = true;
+            }            
+        });
+      },
     view(id) {
           Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
           .then(response => {

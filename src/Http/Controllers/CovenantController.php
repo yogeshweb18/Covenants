@@ -1042,7 +1042,12 @@ class CovenantController extends Controller
                     $actions .= "<div class='dropdown'>";
                     $actions .= "<span class='three-dots'></span>"; 
                     $actions .= "<div class='dropdown-content'>"; 
-                    $actions .= "<ul style='padding: 0px;'><li><span style='width: 100%; display: flex; padding-top: 8px;'>"; 
+                    // $actions .= "<ul style='padding: 0px;'><li><span style='width: 100%; display: flex; padding-top: 8px;'>"; 
+                    $actions .= "<ul style='width: 100%; padding-top: 8px;padding-left:0px;'>";
+                    $actions .= "<li><span style='width: 100%; display: flex; padding-top: 8px;'>";
+                    $actions .= "<a class='point view-placeholder' title='View'>View</a>";
+                    $actions .= "</span></li>"; 
+
                     $actions .= "<div v-if='isApprover == 1' class='point'>";
                     $actions .= "<a @click.prevent='mark('Approved',".$cc->id.")' title='Approve' class='approve-placeholder'> Approve</a>";
                     $actions .= "<a @click.prevent='mark('Rejected',".$cc->id.")' title='Reject' class='reject-placeholder'> Reject</a>";
