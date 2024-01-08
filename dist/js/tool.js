@@ -2847,7 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
           order: [[6, 'asc']],
           rowCallback: function rowCallback(row, data) {
             jquery__WEBPACK_IMPORTED_MODULE_6___default()(row).on('click', '.view-placeholder', function () {
-              self.view(data.covenant_id);
+              self.newview(data.covenant_id);
             });
             jquery__WEBPACK_IMPORTED_MODULE_6___default()(row).on('click', '.resolve-placeholder', function () {
               self.view(data.id);
@@ -2947,7 +2947,7 @@ __webpack_require__.r(__webpack_exports__);
       //$('#col' + i + '_smart').prop('checked')
       ).draw();
     },
-    view: function view(id) {
+    newview: function newview(id) {
       var _this2 = this;
       Nova.request().post('/nova-vendor/covenants/view', {
         'id': id
@@ -2958,15 +2958,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    // view(id) {
-    //       Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
-    //       .then(response => {
-    //           if(response.data.status == 'success') {
-    //             this.viewcompliance = response.data.instance;
-    //             this.isModalVisible = true;
-    //           }            
-    //       });
-    //     },
+    view: function view(id) {
+      var _this3 = this;
+      Nova.request().post('/nova-vendor/covenants/resolution', {
+        'id': id
+      }).then(function (response) {
+        if (response.data.status == 'success') {
+          _this3.viewcompliance = response.data.instance;
+          _this3.isModalVisible = true;
+        }
+      });
+    },
     submitForApproval: function submitForApproval(id) {
       var ids = [id];
       Nova.request().post('/nova-vendor/covenants/submitForApprovalActive', {
