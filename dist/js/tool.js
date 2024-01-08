@@ -2732,10 +2732,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var datatables_net_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! datatables.net-select */ "./node_modules/datatables.net-select/js/dataTables.select.mjs");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _nova_components_Covenants_resources_js_pages_Resolution_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../nova-components/Covenants/resources/js/pages/Resolution.vue */ "./resources/js/pages/Resolution.vue");
-/* harmony import */ var _nova_components_Covenants_resources_js_pages_MarkActive_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue */ "./resources/js/pages/MarkActive.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _nova_components_Covenants_resources_js_pages_View_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../nova-components/Covenants/resources/js/pages/View.vue */ "./resources/js/pages/View.vue");
+/* harmony import */ var _nova_components_Covenants_resources_js_pages_Resolution_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../nova-components/Covenants/resources/js/pages/Resolution.vue */ "./resources/js/pages/Resolution.vue");
+/* harmony import */ var _nova_components_Covenants_resources_js_pages_MarkActive_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue */ "./resources/js/pages/MarkActive.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
+
 
 
 
@@ -2762,8 +2764,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   components: {
-    Modal: _nova_components_Covenants_resources_js_pages_Resolution_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
-    Mark: _nova_components_Covenants_resources_js_pages_MarkActive_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+    Modalview: _nova_components_Covenants_resources_js_pages_View_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+    Modal: _nova_components_Covenants_resources_js_pages_Resolution_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
+    Mark: _nova_components_Covenants_resources_js_pages_MarkActive_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
   },
   props: ['loadPage', 'viewOnly', 'isApprover'],
   methods: {
