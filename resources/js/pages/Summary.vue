@@ -160,7 +160,7 @@ export default {
           
           rowCallback(row, data) {
             $(row).on('click', '.view-placeholder',() => {
-                      self.view(data.covenant_id);
+                      self.newview(data.covenant_id);
               });
               $(row).on('click', '.resolve-placeholder',() => {
                 self.view(data.id);
@@ -291,7 +291,7 @@ export default {
             )
             .draw();
     },
-    view(id) {
+    newview(id) {
         Nova.request().post('/nova-vendor/covenants/view',{'id':id})
         .then(response => {
             if(response.data.status == 'success') {
@@ -300,15 +300,15 @@ export default {
             }            
         });
       },
-    // view(id) {
-    //       Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
-    //       .then(response => {
-    //           if(response.data.status == 'success') {
-    //             this.viewcompliance = response.data.instance;
-    //             this.isModalVisible = true;
-    //           }            
-    //       });
-    //     },
+    view(id) {
+          Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
+          .then(response => {
+              if(response.data.status == 'success') {
+                this.viewcompliance = response.data.instance;
+                this.isModalVisible = true;
+              }            
+          });
+        },
 
       submitForApproval(id) {
         var ids = [id];
