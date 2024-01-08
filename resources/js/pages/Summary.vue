@@ -298,15 +298,15 @@ export default {
             }            
         });
       },
-    view(id) {
-          Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
-          .then(response => {
-              if(response.data.status == 'success') {
-                this.viewcompliance = response.data.instance;
-                this.isModalVisible = true;
-              }            
-          });
-        },
+    // view(id) {
+    //       Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
+    //       .then(response => {
+    //           if(response.data.status == 'success') {
+    //             this.viewcompliance = response.data.instance;
+    //             this.isModalVisible = true;
+    //           }            
+    //       });
+    //     },
 
       submitForApproval(id) {
         var ids = [id];
