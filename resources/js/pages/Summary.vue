@@ -78,6 +78,7 @@ import "datatables.net-rowgroup-dt/js/rowGroup.dataTables";
 import "datatables.net-rowgroup-dt/css/rowGroup.dataTables.min.css";
 import 'datatables.net-select';
 import $ from 'jquery';
+import Modalview from '../../../../../nova-components/Covenants/resources/js/pages/View.vue';
 import Modal from '../../../../../nova-components/Covenants/resources/js/pages/Resolution.vue';
 import Mark from '../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue';
 import axios from 'axios';
@@ -97,6 +98,7 @@ export default {
     }
   },
   components: {
+    Modalview,
     Modal,
     Mark
   },
