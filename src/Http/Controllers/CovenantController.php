@@ -754,7 +754,7 @@ class CovenantController extends Controller
     { 
         
         $id = $request->input('id');
-        
+        dd($id);
         try {
             $covenant = DB::table('compliances')
             ->join('compliances_covenants', 'compliances.id', '=', 'compliances_covenants.complianceId')
