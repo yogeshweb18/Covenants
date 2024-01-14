@@ -113,6 +113,7 @@ export default {
                 "deferRender": true,
                   rowCallback(row, data) {
                     $(row).on('click', '.view-placeholder',() => {
+                      console.log('===================');
                       self.view(data.covenant_id);
                     });
                     $(row).on('click', '.timeline-placeholder',() => {
@@ -140,6 +141,7 @@ export default {
       },
 
       view(id) {
+        console.log('Logging ID:', id);
         Nova.request().post('/nova-vendor/covenants/view',{'id':id})
         .then(response => {
             if(response.data.status == 'success') {

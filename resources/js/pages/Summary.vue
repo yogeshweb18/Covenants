@@ -160,6 +160,7 @@ export default {
           
           rowCallback(row, data) {
             $(row).on('click', '.view-placeholder',() => {
+              console.log(data);
                       self.newview(data.covenant_id);
               });
               $(row).on('click', '.resolve-placeholder',() => {
