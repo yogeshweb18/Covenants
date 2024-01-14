@@ -752,7 +752,9 @@ class CovenantController extends Controller
 
 	public function view(Request $request) 
     { 
+        
         $id = $request->input('id');
+        
         try {
             $covenant = DB::table('compliances')
             ->join('compliances_covenants', 'compliances.id', '=', 'compliances_covenants.complianceId')
