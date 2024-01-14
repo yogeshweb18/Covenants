@@ -113,7 +113,7 @@ export default {
                 "deferRender": true,
                   rowCallback(row, data) {
                     $(row).on('click', '.view-placeholder',() => {
-                      console.log('==================='+data);
+                      console.log('===================', JSON.stringify(data));
                       self.view(data.covenant_id);
                     });
                     $(row).on('click', '.timeline-placeholder',() => {
