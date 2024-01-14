@@ -160,8 +160,9 @@ export default {
           
           rowCallback(row, data) {
             $(row).on('click', '.view-placeholder',() => {
-              console.log('---------', JSON.stringify(data));
-                      self.newview(data.covenant_id);
+             // console.log('---------', JSON.stringify(data));
+             console.log('-----'+data.id);
+                      self.newview(data.id);
               });
               $(row).on('click', '.resolve-placeholder',() => {
                 self.view(data.id);
@@ -293,6 +294,7 @@ export default {
             .draw();
     },
     newview(id) {
+      console.log('Logging ID----:', id);
         Nova.request().post('/nova-vendor/covenants/view',{'id':id})
         .then(response => {
             if(response.data.status == 'success') {

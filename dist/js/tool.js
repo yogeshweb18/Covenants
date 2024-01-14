@@ -2849,8 +2849,9 @@ __webpack_require__.r(__webpack_exports__);
           order: [[6, 'asc']],
           rowCallback: function rowCallback(row, data) {
             jquery__WEBPACK_IMPORTED_MODULE_6___default()(row).on('click', '.view-placeholder', function () {
-              console.log('---------', JSON.stringify(data));
-              self.newview(data.covenant_id);
+              // console.log('---------', JSON.stringify(data));
+              console.log('-----' + data.id);
+              self.newview(data.id);
             });
             jquery__WEBPACK_IMPORTED_MODULE_6___default()(row).on('click', '.resolve-placeholder', function () {
               self.view(data.id);
@@ -2952,6 +2953,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     newview: function newview(id) {
       var _this2 = this;
+      console.log('Logging ID----:', id);
       Nova.request().post('/nova-vendor/covenants/view', {
         'id': id
       }).then(function (response) {
