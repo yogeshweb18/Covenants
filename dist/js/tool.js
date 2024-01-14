@@ -2483,6 +2483,7 @@ function getParam() {
           "deferRender": true,
           rowCallback: function rowCallback(row, data) {
             jquery__WEBPACK_IMPORTED_MODULE_3___default()(row).on('click', '.view-placeholder', function () {
+              console.log('===================');
               self.view(data.covenant_id);
             });
             jquery__WEBPACK_IMPORTED_MODULE_3___default()(row).on('click', '.timeline-placeholder', function () {
@@ -2508,6 +2509,7 @@ function getParam() {
     },
     view: function view(id) {
       var _this2 = this;
+      console.log('Logging ID:', id);
       Nova.request().post('/nova-vendor/covenants/view', {
         'id': id
       }).then(function (response) {
@@ -2847,6 +2849,7 @@ __webpack_require__.r(__webpack_exports__);
           order: [[6, 'asc']],
           rowCallback: function rowCallback(row, data) {
             jquery__WEBPACK_IMPORTED_MODULE_6___default()(row).on('click', '.view-placeholder', function () {
+              console.log(data);
               self.newview(data.covenant_id);
             });
             jquery__WEBPACK_IMPORTED_MODULE_6___default()(row).on('click', '.resolve-placeholder', function () {
