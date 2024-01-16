@@ -57,6 +57,11 @@
         @close="closeModal"
         :selectedData="viewcompliance"
     />
+    <Modalview
+        v-show="isModalVisible_view"
+        @close="closeModal_view"
+        :selectedData="viewcompliance_view"
+    />
 </div>
     <div>
       <Mark
@@ -79,7 +84,7 @@ import "datatables.net-rowgroup-dt/js/rowGroup.dataTables";
 import "datatables.net-rowgroup-dt/css/rowGroup.dataTables.min.css";
 import 'datatables.net-select';
 import $ from 'jquery';
-import Modalview from '../../../../../nova-components/Covenants/resources/js/pages/View.vue';
+import Modalview from '../../../../../nova-components/Covenants/resources/js/pages/View_pending.vue';
 import Modal from '../../../../../nova-components/Covenants/resources/js/pages/Resolution.vue';
 import Mark from '../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue';
 import axios from 'axios';
@@ -93,6 +98,7 @@ export default {
       viewcompliance: {},
       viewcompliance_view: {},
       isModalVisible: false,
+      isModalVisible_view: false,
       isMarkVisible: false,
       selectedData: [],
       approvalData: [],
@@ -301,7 +307,7 @@ export default {
         .then(response => {
             if(response.data.status == 'success') {
               this.viewcompliance_view = response.data.covenant;
-              this.isModalviewVisible = true;
+              this.isModalVisible_view = true;
             }            
         });
       },
@@ -360,6 +366,7 @@ export default {
 
         closeModal() {
           this.isModalVisible = false;
+          this.isModalVisible_view =false;
         },
 
         closeMark() {
