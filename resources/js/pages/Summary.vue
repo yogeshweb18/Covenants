@@ -66,6 +66,21 @@
           :status="approvalStatus"
         />
     </div>
+    <div id="viewModal">
+        <Modalview
+          v-show="isModalVisible"
+          @close="closeModal"
+          :selectedData="viewcompliance"
+        />
+    </div>
+    <div>
+      <Mark
+          v-show="isMarkVisible"
+          @close="closeMark"
+          :approvalData="approvalData" 
+          :status="approvalStatus"
+        />
+    </div>
   </div>
 </template>
 
