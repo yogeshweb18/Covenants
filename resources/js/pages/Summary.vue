@@ -58,13 +58,6 @@
           :selectedData="viewcompliance"
         />
     </div>
-    <div id="viewModal_1">
-    <Modalview
-        v-show="isModalVisible"
-        @close="closeModal"
-        :selectedData="viewcompliance"
-       />
-    </div>
     <div>
       <Mark
           v-show="isMarkVisible"
@@ -306,7 +299,7 @@ export default {
         Nova.request().post('/nova-vendor/covenants/view',{'id':id})
         .then(response => {
             if(response.data.status == 'success') {
-              this.viewCovenant = response.data.covenant;
+              this.viewcompliance = response.data.covenant;
               this.isModalVisible = true;
             }            
         });
