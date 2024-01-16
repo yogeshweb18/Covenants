@@ -58,7 +58,7 @@
 
 <script>
   export default {
-    name: 'Modal',
+    name: ['Modal','Modalview'],
     props: ['approvalData','status'],
     data() {
     return {
