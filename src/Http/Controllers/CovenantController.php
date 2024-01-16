@@ -754,7 +754,7 @@ class CovenantController extends Controller
     { 
         
         $id = $request->input('id');
-        dd($id);
+        //dd($id); //  compliances_covenants // 26616
         try {
             $covenant = DB::table('compliances')
             ->join('compliances_covenants', 'compliances.id', '=', 'compliances_covenants.complianceId')
@@ -814,7 +814,7 @@ class CovenantController extends Controller
         } catch (\Exception $e) {
             $covenantDetails =  response()->json(['message'=>'Covenant not found!'], 404);
         }
-
+//dd($covenantDetails);
         $result['status'] = 'success';
         $result['covenant'] = $covenantDetails;
 
