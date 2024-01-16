@@ -59,12 +59,13 @@
     />
 
 </div>
-<div id="viewModal_view">
-  <Modalview
-        v-show="isModalVisible_view"
-        @close="closeModal_view"
-        :selectedData="viewcompliance_view"
+<div >
+    <Modalview
+        v-show="isModalVisible"
+        @close="closeModal"
+        :selectedData="viewcompliance"
     />
+
 </div>
     <div>
       <Mark
