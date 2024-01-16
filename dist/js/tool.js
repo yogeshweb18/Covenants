@@ -4745,12 +4745,8 @@ var _hoisted_20 = {
 var _hoisted_21 = {
   id: "viewModal"
 };
-var _hoisted_22 = {
-  id: "viewModal_view"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Modal");
-  var _component_Modalview = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Modalview");
   var _component_Mark = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Mark");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
@@ -4797,10 +4793,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Reject")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div style=\"padding-top:30px;\" v-else-if=\"viewOnly == 1\"><button class=\"flex-shrink-0 shadow rounded focus:outline-none ring-primary-200 dark:ring-gray-600 focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-2 h-9 text-sm flex-shrink-0\" @click.prevent=\"multiSubmitForApproval()\">Submit For Approval</button>\r\n      </div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Modal, {
     onClose: $options.closeModal,
     selectedData: $data.viewcompliance
-  }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isModalVisible]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Modalview, {
-    onClose: _ctx.closeModal_view,
-    selectedData: $data.viewcompliance_view
-  }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isModalVisible_view]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Mark, {
+  }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isModalVisible]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Mark, {
     onClose: $options.closeMark,
     approvalData: $data.approvalData,
     status: $data.approvalStatus
