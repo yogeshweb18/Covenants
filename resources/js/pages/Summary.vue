@@ -52,12 +52,17 @@
       </div> -->
     </div>
     <div id="viewModal">
-        <Modal
-          v-show="isModalVisible"
-          @close="closeModal"
-          :selectedData="viewcompliance"
-        />
-    </div>
+    <Modal
+        v-show="isModalVisible"
+        @close="closeModal"
+        :selectedData="viewcompliance"
+    />
+    <Modalview
+        v-show="isModalviewVisible"
+        @close="closeModal"
+        :selectedData="viewcompliance"
+    />
+</div>
     <div>
       <Mark
           v-show="isMarkVisible"
@@ -300,7 +305,7 @@ export default {
         .then(response => {
             if(response.data.status == 'success') {
               this.viewcompliance = response.data.covenant;
-              this.isModalVisible = true;
+              this.isModalviewVisible = true;
             }            
         });
       },
