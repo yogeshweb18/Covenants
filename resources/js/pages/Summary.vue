@@ -51,7 +51,31 @@
       <!-- <div style="padding-top:30px;" v-else-if="viewOnly == 1"><button class="flex-shrink-0 shadow rounded focus:outline-none ring-primary-200 dark:ring-gray-600 focus:ring bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white dark:text-gray-800 inline-flex items-center font-bold px-2 h-9 text-sm flex-shrink-0" @click.prevent="multiSubmitForApproval()">Submit For Approval</button>
       </div> -->
     </div>
-    <div id="viewModal">
+
+    <!-- Consolidate the code for Modal and Mark into a single section -->
+<div id="viewModal">
+    <Modal
+        v-show="isModalVisible"
+        @close="closeModal"
+        :selectedData="viewcompliance"
+    />
+    <Modalview
+        v-show="isModalVisible"
+        @close="closeModal"
+        :selectedData="viewcompliance"
+    />
+</div>
+
+<div>
+    <Mark
+        v-show="isMarkVisible"
+        @close="closeMark"
+        :approvalData="approvalData" 
+        :status="approvalStatus"
+    />
+</div>
+
+    <!-- <div id="viewModal">
         <Modal
           v-show="isModalVisible"
           @close="closeModal"
@@ -80,7 +104,7 @@
           :approvalData="approvalData" 
           :status="approvalStatus"
         />
-    </div>
+    </div> -->
   </div>
 </template>
 
