@@ -57,7 +57,9 @@
           @close="closeModal"
           :selectedData="viewcompliance"
         />
-        <Modalview
+    </div>
+    <div id="viewModal_1">
+    <Modalview
         v-show="isModalVisible"
         @close="closeModal"
         :selectedData="viewcompliance"
