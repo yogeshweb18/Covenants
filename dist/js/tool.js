@@ -2758,6 +2758,7 @@ __webpack_require__.r(__webpack_exports__);
       viewOnly: 1,
       isApprover: 0,
       viewcompliance: {},
+      viewcompliance_view: {},
       isModalVisible: false,
       isMarkVisible: false,
       selectedData: [],
@@ -2958,7 +2959,7 @@ __webpack_require__.r(__webpack_exports__);
         'id': id
       }).then(function (response) {
         if (response.data.status == 'success') {
-          _this2.viewcompliance = response.data.covenant;
+          _this2.viewcompliance_view = response.data.covenant;
           _this2.isModalviewVisible = true;
         }
       });
@@ -4770,7 +4771,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     selectedData: $data.viewcompliance
   }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isModalVisible]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Modalview, {
     onClose: $options.closeModal,
-    selectedData: $data.viewcompliance
+    selectedData: $data.viewcompliance_view
   }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.isModalviewVisible]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Mark, {
     onClose: $options.closeMark,
     approvalData: $data.approvalData,
