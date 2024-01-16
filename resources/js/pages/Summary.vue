@@ -57,6 +57,11 @@
           @close="closeModal"
           :selectedData="viewcompliance"
         />
+        <Modalview
+        v-show="isModalVisible"
+        @close="closeModal"
+        :selectedData="viewcompliance"
+       />
     </div>
     <div>
       <Mark
