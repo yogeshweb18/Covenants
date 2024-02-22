@@ -174,7 +174,7 @@ export default {
             $(row).on('click', '.view-placeholder',() => {
               console.log('---------', JSON.stringify(data));
              console.log('///'+data.id);
-                      self.newview(data.id);
+                      self.newview('9313');
               });
               $(row).on('click', '.resolve-placeholder',() => {
                 self.view(data.id);
