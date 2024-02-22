@@ -61,8 +61,8 @@
 </div>
 <div >
     <Modalview
-        v-show="isModalVisible"
-        @close="closeModal"
+        v-show="isModalviewVisible"
+        @close="closeModalview"
         :selectedData="viewcompliance"
     />
 

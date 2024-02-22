@@ -4795,9 +4795,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClose: $options.closeModal,
     selectedData: $data.viewcompliance
   }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isModalVisible]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Modalview, {
-    onClose: $options.closeModal,
+    onClose: _ctx.closeModalview,
     selectedData: $data.viewcompliance
-  }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.isModalVisible]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Mark, {
+  }, null, 8 /* PROPS */, ["onClose", "selectedData"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.isModalviewVisible]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Mark, {
     onClose: $options.closeMark,
     approvalData: $data.approvalData,
     status: $data.approvalStatus
