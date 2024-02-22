@@ -753,7 +753,7 @@ class CovenantController extends Controller
 	public function view(Request $request) 
     { 
         
-        $id = $request->input('id');
+        $id = '9313'; //$request->input('id');
         //dd($id); //  compliances_covenants // 26616
         try {
             $covenant = DB::table('compliances')
