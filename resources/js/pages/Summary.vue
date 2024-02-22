@@ -85,8 +85,8 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import "datatables.net-rowgroup-dt/js/rowGroup.dataTables";
 import "datatables.net-rowgroup-dt/css/rowGroup.dataTables.min.css";
 import 'datatables.net-select';
-import $ from 'jquery';
-import Modalview from '../../../../../nova-components/Covenants/resources/js/pages/View_pending.vue';
+// import $ from 'jquery';
+import Modalview from '../../../../../nova-components/Covenants/resources/js/pages/Instance.vue';
 import Modal from '../../../../../nova-components/Covenants/resources/js/pages/Resolution.vue';
 import Mark from '../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue';
 import axios from 'axios';
@@ -208,6 +208,7 @@ export default {
       });
 
       $('#covenant-list tbody').on('click', 'td.dt-control', function () {
+        console.log('hi-----------');
               var tr = $(this).closest('tr');
               var row = table.row(tr);
        
