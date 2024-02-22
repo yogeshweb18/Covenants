@@ -1457,7 +1457,7 @@ class CovenantController extends Controller
             $comp_update = DB::table('compliances')
                     ->where('id',$cmpid[0]->complianceId)
                     ->update(['complianceStatus'=> 'In Progress']);
-            
+            dd('hello=========');
             if($update) {
                 $success = true;
             }
