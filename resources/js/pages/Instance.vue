@@ -16,7 +16,7 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Type</label>
                       <span class="answer">
-                       <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.type}}</label>
+                       <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.type}}</label>
                       </span>
                   </div>
                 </div>
@@ -26,7 +26,7 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Sub Type <span class="text-red-500 text-sm">*</span></label>
                        <span class="answer">
-                         <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.subType}}</label>
+                         <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.subType}}</label>
                        </span>
                   </div>
                 </div>
@@ -36,7 +36,7 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Description <span class="text-red-500 text-sm">*</span></label>
                       <span class="answer">
-                        <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.description}}</label>               
+                        <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.description}}</label>               
                       </span>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Comments <span class="text-red-500 text-sm">*</span></label>
                        <span class="answer">
-                        <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.comments}}</label>
+                        <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.comments}}</label>
                       </span>
                   </div>
                 </div>
@@ -56,7 +56,7 @@
                  <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Frequency <span class="text-red-500 text-sm">*</span></label>
                        <span class="answer">
-                         <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.frequency}}</label>               
+                         <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.frequency}}</label>               
                        </span>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Target Value <span class="text-red-500 text-sm">*</span></label>
                      <span class="answer">
-                      <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.targetValue}}</label>               
+                      <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.targetValue}}</label>               
                      </span>
                   </div>
                 </div>
@@ -76,7 +76,7 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Start Date <span class="text-red-500 text-sm">*</span></label>
                     <span class="answer">
-                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.startDate}}</label>
+                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.startDate}}</label>
                     </span>
                   </div>
                 </div>
@@ -86,7 +86,7 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Due Date <span class="text-red-500 text-sm">*</span></label>
                       <span class="answer">
-                        <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.dueDate}}</label>
+                        <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.dueDate}}</label>
                       </span>
                   </div>
                 </div>
@@ -96,13 +96,13 @@
                   <div class="mt-2 md:mt-0">
                     <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Applicable Month</label>
                     <span class="answer">
-                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.applicableMonth}}</label>           
+                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.applicableMonth}}</label>           
                     </span>
                   </div>
                  </div>
               </div>
-              <div v-if="covenant.isCustomCovenant == 0">
-                <div v-if="typeof covenant.covenantParameters !== 'undefined' && Object.keys(covenant.covenantParameters).length>0" v-for="param in covenant.covenantParameters">
+              <div v-if="instance.isCustomCovenant == 0">
+                <div v-if="typeof instance.covenantParameters !== 'undefined' && Object.keys(instance.covenantParameters).length>0" v-for="param in instance.covenantParameters">
                   <div class="bg-white dark:bg-gray-800">
                     <div class="field-wrapper flex flex-col border-b border-gray-100 dark:border-gray-700 md:flex-row">
                       <div class="mt-2 md:mt-0">
@@ -115,7 +115,7 @@
                      </div>
                   </div>
                 </div>
-                <div v-if="typeof covenant.child !== 'undefined' && covenant.child.length>0" v-for="child in covenant.child">
+                <div v-if="typeof instance.child !== 'undefined' && instance.child.length>0" v-for="child in instance.child">
                   <div class="bg-white dark:bg-gray-800">
                     <div class="field-wrapper flex flex-col border-b border-gray-100 dark:border-gray-700 md:flex-row">
                       <div class="mt-2 md:mt-0">
@@ -130,37 +130,37 @@
                 </div>
               </div> 
 
-              <div v-if="covenant.isCustomCovenant == 1">
-                <div v-if="typeof covenant.custom_parameter !== 'undefined'">
+              <div v-if="instance.isCustomCovenant == 1">
+                <div v-if="typeof instance.custom_parameter !== 'undefined'">
                  <div class="bg-white dark:bg-gray-800">
                   <div class="field-wrapper flex flex-col border-b border-gray-100 dark:border-gray-700 md:flex-row">
                     <div class="mt-2 md:mt-0">
                     <label for="" class="inline-block pt-2 leading-tight">Parameter</label>
                      <span class="answer">
-                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.custom_parameter}}</label>
+                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.custom_parameter}}</label>
                     </span>
                     </div>
                   </div>
                   <div class="mt-2 md:mt-0">
                     <label for="" class="inline-block pt-2 leading-tight">Value</label>
                     <span class="answer">
-                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.custom_value}}</label>
+                    <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.custom_value}}</label>
                   </span>
                   </div>
                 </div>
                 </div>
-                <div v-if="typeof covenant.custom_child !== 'undefined'">
+                <div v-if="typeof instance.custom_child !== 'undefined'">
                   <div class="bg-white dark:bg-gray-800">
                     <div class="mt-2 md:mt-0">
                       <label for="" class="inline-block pt-2 leading-tight">Child Covenant</label>
                       <span class="answer">
-                      <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.custom_child}}</label>
+                      <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.custom_child}}</label>
                     </span>
                     </div>
                     <div class="mt-2 md:mt-0">
                       <label for="" class="inline-block pt-2 leading-tight">Child Due Date</label>
                       <span class="answer">
-                      <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{covenant.custom_child_dueDate}}</label>
+                      <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">{{instance.custom_child_dueDate}}</label>
                     </span>
                     </div>
                   </div>
@@ -183,7 +183,7 @@
 <script>
   export default {
     name: 'Modalview',
-    props: ['covenant'],
+    props: ['instance'],
     methods: {
       close() {
         this.$emit('close');
