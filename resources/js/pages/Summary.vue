@@ -114,6 +114,20 @@ export default {
   },
   props: ['loadPage','viewOnly','isApprover'],
   methods: {
+    newview(id) {
+    console.log('Logging ID:', id);
+    console.log('Before setting isModalviewVisible:', this.isModalviewVisible); // Add this line
+    this.isModalviewVisible = true; // This line should already exist in your method
+    console.log('After setting isModalviewVisible:', this.isModalviewVisible); // Add this line
+    // Rest of your method code
+  },
+  view(id) {
+    console.log('Before setting isModalVisible:', this.isModalVisible); // Add this line
+    this.isModalVisible = true; // This line should already exist in your method
+    console.log('After setting isModalVisible:', this.isModalVisible); // Add this line
+    // Rest of your method code
+  },
+  
     populateDatatable() {
       setTimeout(() => {
       $.ajaxSetup({
