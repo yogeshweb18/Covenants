@@ -52,19 +52,12 @@
       </div>
     </div>
     <div id="viewModal">
-    <Modal
-        v-show="isModalVisible"
-        @close="closeModal"
-        :selectedData="viewcompliance"
-    />
-    
-    <Modalview
-        v-show="isModalviewVisible"
-        @close="closeModalview"
-        :selectedData="viewcompliance"
-    />
-
-</div>
+        <Modal
+          v-show="isModalVisible"
+          @close="closeModal"
+          :selectedData="viewcompliance"
+        />
+    </div>
     <div>
       <Mark
           v-show="isMarkVisible"
@@ -73,7 +66,6 @@
           :status="approvalStatus"
         />
     </div>
-
   </div>
 </template>
 
@@ -86,7 +78,6 @@ import "datatables.net-rowgroup-dt/js/rowGroup.dataTables";
 import "datatables.net-rowgroup-dt/css/rowGroup.dataTables.min.css";
 import 'datatables.net-select';
 import $ from 'jquery';
-import Modalview from '../../../../../nova-components/Covenants/resources/js/pages/Instance.vue';
 import Modal from '../../../../../nova-components/Covenants/resources/js/pages/Resolution.vue';
 import Mark from '../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue';
 import axios from 'axios';
@@ -95,12 +86,8 @@ export default {
     return {
       covenants:[],
       viewCovenant: {},
-      viewOnly: 1,
-      isApprover: 0,
       viewcompliance: {},
-      viewcompliance_view: {},
       isModalVisible: false,
-      isModalVisible_view: false,
       isMarkVisible: false,
       selectedData: [],
       approvalData: [],
@@ -108,26 +95,11 @@ export default {
     }
   },
   components: {
-    Modalview,
     Modal,
     Mark
   },
   props: ['loadPage','viewOnly','isApprover'],
   methods: {
-    newview(id) {
-    console.log('Logging ID:', id);
-    console.log('Before setting isModalviewVisible:', this.isModalviewVisible); // Add this line
-    this.isModalviewVisible = true; // This line should already exist in your method
-    console.log('After setting isModalviewVisible:', this.isModalviewVisible); // Add this line
-    // Rest of your method code
-  },
-  view(id) {
-    console.log('Before setting isModalVisible:', this.isModalVisible); // Add this line
-    this.isModalVisible = true; // This line should already exist in your method
-    console.log('After setting isModalVisible:', this.isModalVisible); // Add this line
-    // Rest of your method code
-  },
-  
     populateDatatable() {
       setTimeout(() => {
       $.ajaxSetup({
@@ -183,11 +155,6 @@ export default {
             order: [[6, 'asc']],
           
           rowCallback(row, data) {
-            $(row).on('click', '.view-placeholder',() => {
-              console.log('---------', JSON.stringify(data));
-             console.log('///'+data.id);
-                      self.newview(data.id);
-              });
               $(row).on('click', '.resolve-placeholder',() => {
                 self.view(data.id);
               });
@@ -208,7 +175,6 @@ export default {
       });
 
       $('#covenant-list tbody').on('click', 'td.dt-control', function () {
-        console.log('hi-----------');
               var tr = $(this).closest('tr');
               var row = table.row(tr);
        
@@ -318,16 +284,7 @@ export default {
             )
             .draw();
     },
-    newview(id) {
-      console.log('Logging ID----', id);
-        Nova.request().post('/nova-vendor/covenants/view',{'id':id})
-        .then(response => {
-            if(response.data.status == 'success') {
-              this.viewcompliance_view = response.data.covenant;
-              this.isModalVisible_view = true;
-            }            
-        });
-      },
+
     view(id) {
           Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
           .then(response => {
@@ -383,7 +340,6 @@ export default {
 
         closeModal() {
           this.isModalVisible = false;
-          this.isModalVisible_view =false;
         },
 
         closeMark() {
@@ -419,29 +375,29 @@ export default {
    
   },
 }
-// function format(d) {
-//         return (
-//             '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;width:100%">' +
-//             '<thead><tr><th>Description</th><th>Inconsistency Treatment</th><th>Comments</th><th>ISIN</th></tr></thead>'+
-//             '<tbody>' +
-//             '<tr>' +
-//             '<td>' +
-//             d.description +
-//             '</td>' +
-//             '<td>' +
-//             d.inconsistencyTreatment +
-//             '</td>' +
-//             '<td>' +
-//             d.comments +
-//             '</td>' +
-//             '<td>' +
-//             d.isins +
-//             '</td>' +
-//             '</tr>' +
-//             '</tbody>' +
-//             '</table>'
-//         );
-//     }
+function format(d) {
+        return (
+            '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;width:100%">' +
+            '<thead><tr><th>Description</th><th>Inconsistency Treatment</th><th>Comments</th><th>ISIN</th></tr></thead>'+
+            '<tbody>' +
+            '<tr>' +
+            '<td>' +
+            d.description +
+            '</td>' +
+            '<td>' +
+            d.inconsistencyTreatment +
+            '</td>' +
+            '<td>' +
+            d.comments +
+            '</td>' +
+            '<td>' +
+            d.isins +
+            '</td>' +
+            '</tr>' +
+            '</tbody>' +
+            '</table>'
+        );
+    }
 </script>
 
 <style>

@@ -817,6 +817,7 @@ class CovenantController extends Controller
 //dd($covenantDetails);
         $result['status'] = 'success';
         $result['covenant'] = $covenantDetails;
+        $result['instance'] = $covenantDetails;
 
         return json_encode($result);die;
     }
@@ -1041,13 +1042,14 @@ class CovenantController extends Controller
                     $actions .= "<button @click.prevent='submitForApproval(".$cc->id.")' class='sfa-placeholder'><img title='Submit For Approval' src='/img/sendForApproval.png' /></button>"; 
                 }
                 if(($isApprover == 1 && $cc->approvalStatus == "Pending For Approval")) {
+                    $id='';
                     $actions .= "<div class='dropdown'>";
                     $actions .= "<span class='three-dots'></span>"; 
                     $actions .= "<div class='dropdown-content'>"; 
                     // $actions .= "<ul style='padding: 0px;'><li><span style='width: 100%; display: flex; padding-top: 8px;'>"; 
                     $actions .= "<ul style='width: 100%; padding-top: 8px; padding-left: 0px;'>";
                     $actions .= "<li><span style='width: 100%; display: flex; padding-top: 8px;'>";
-                    $actions .= "<a class='point view-placeholder' title='View' onclick='newview($id)'>View</a>";
+                    $actions .= "<a class='point view-placeholder' title='View' onclick='newview('$id')'>View</a>";
                     $actions .= "</span></li>";                    
 
                     $actions .= "<div v-if='isApprover == 1' class='point'>";
@@ -1114,6 +1116,15 @@ class CovenantController extends Controller
         $query->join('compliances as c', 'ci.complianceId', '=', 'c.id');
         $query->join('clients', 'c.clientReference', '=', 'clients.id');
         $query->leftJoin('users', 'ci.resolver', '=', 'users.id');
+/*
+        $results = $query->get();
+        $types = $results->pluck('type')->unique()->values()->all();
+
+// Printing the extracted values
+dd($types);
+
+*/
+
         if($user_role == config('global.roles.ADMIN') || $user_role == config('global.roles.AUDITOR') || $user_role == config('global.roles.SUPER_ADMIN')) {
             $viewOnly = 1;
             $key = 'c.organization_id';
@@ -1130,6 +1141,7 @@ class CovenantController extends Controller
             $key = 'c.organization_id';
             $value = $organization_id;
             $query->where($key,$value);
+          
         }
         else if($user_role == config('global.roles.CCU_CHECKER') || $user_role == config('global.roles.CSOG_CHECKER')) {
             $viewOnly = 1;
@@ -1141,8 +1153,12 @@ class CovenantController extends Controller
         else if($user_role == config('global.roles.SUPER_ADMIN')) {
             $viewOnly = 1;
         }
+        
         $query->where('cc.covenantStatus','Approved');
-        $query->where('ci.activateDate','<=',$today);
+        //$query->where('ci.activateDate','>=',$today);
+            // $results = $query->get();
+            // $types = $results->pluck('type')->unique()->values()->all();
+            // dd($types);
         //$query->orderByRaw('ci.activateDate ASC');
         foreach($request->input('columns') as $cols) {
             if($cols['search']['value'] != '') {
@@ -1160,6 +1176,7 @@ class CovenantController extends Controller
                 }
             }
         }
+
         if(!empty($request->input('search.value')))
         {
             $query->where('cc.frequency','LIKE','%'.$request->input('search.value').'%');
@@ -1172,7 +1189,7 @@ class CovenantController extends Controller
 
         $post_data = $query->get(['ci.id','ci.complianceId','ci.covenantId','c.clcode','clients.name as cname','cc.type','cc.subType','cc.frequency',DB::raw('DATE_FORMAT(ci.activateDate, "%d-%m-%Y") as activateDate'),DB::raw('DATE_FORMAT(ci.dueDate, "%d-%m-%Y") as dueDate'),'cc.targetValue','ci.resolution_value','ci.status','cc.description','cc.comments','c.inconsistencyTreatment','c.secured','ci.approvalStatus','users.name']);
         
-         
+         //dd($post_data);
         $data_val = array();
         if(!empty($post_data))
         {
@@ -1262,6 +1279,7 @@ class CovenantController extends Controller
     }
 
     public function summary(Request $request) {
+       
         $comp_cov = [];
         $viewOnly = 0;
         $isApprover = 0;
