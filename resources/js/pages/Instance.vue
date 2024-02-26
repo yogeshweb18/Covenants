@@ -70,7 +70,7 @@
 
                           <a href="{{ route('download.file', ['filename' => instance.upload]) }}">Download File</a>
                           
-                          <a href="/download/{{ instance.upload }}">Download File</a>
+                          <a :href="'/download/' + instance.upload">Download File</a>
                         </span>
                     </div>
                 </div>
