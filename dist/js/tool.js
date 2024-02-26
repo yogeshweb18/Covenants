@@ -4117,6 +4117,8 @@ var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   href: "{{ route('download.file', ['filename' => $covenantDetails['upload']]) }}"
 }, "Download File"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "{{ route('download.file', ['filename' => instance.upload]) }}"
+}, "Download File"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "/download/{{ instance.upload }}"
 }, "Download File")])])])], -1 /* HOISTED */);
 var _hoisted_36 = {
   "class": "bg-white dark:bg-gray-800"
