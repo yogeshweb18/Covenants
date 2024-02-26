@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Validator;
 
 class CovenantController extends Controller
 {
+    
 	public function list(Request $request) {
+        //dd('one');
         //print_r($request->all());die;
 		$user_object = \Auth::user();
         $current_user = $user_object->id;
@@ -83,6 +85,7 @@ class CovenantController extends Controller
 	}
 
     public function approvedCovenant() {
+        //dd('one-1');
         $user_object = \Auth::user();
         $current_user = $user_object->id;
         $user_role = $user_object->role->role;
@@ -123,6 +126,7 @@ class CovenantController extends Controller
     }
 
     public function pendingApproval(Request $request) {
+        //dd('one-3');
         $user_object = \Auth::user();
         $current_user = $user_object->id;
         $user_role = $user_object->role->role;
@@ -240,6 +244,7 @@ class CovenantController extends Controller
     }
 
     public function pendingCovenant() {
+        //dd('one-4');
         $user_object = \Auth::user();
         $current_user = $user_object->id;
         $user_role = $user_object->role->role;
@@ -275,6 +280,7 @@ class CovenantController extends Controller
     }
 
     public function pendingApprovalActive() {
+        //dd('one-5');
         $comp_cov = [];
         $viewOnly = 0;
         $isApprover = 0;
@@ -300,7 +306,8 @@ class CovenantController extends Controller
         die;
     }
 
-    public function approvedActiveList() {       
+    public function approvedActiveList() {   
+        //dd('one-6');    
         $comp_cov = [];
         $viewOnly = 0;
         $isApprover = 0;
@@ -325,6 +332,7 @@ class CovenantController extends Controller
     }
 
     public function activeListApproved(Request $request) {
+        //dd('one-7');
         //print_r($request->input());die;
         $totalFilteredRecord = $totalDataRecord = $draw_val = "";
         $columns_list = array(
@@ -494,7 +502,7 @@ class CovenantController extends Controller
     }
 
     public function clone(Request $request) {
-
+        //dd('one-8');
         $covenant_id = $request->input('id');
         try {
                 $covenant = ComplianceCovenant::FindOrFail($covenant_id);
@@ -557,7 +565,7 @@ class CovenantController extends Controller
     }
 
     public function addClone(Request $request) {
-
+        //dd('one-9');
         $submittedData = $request->all();
         $covenantData = [];
         $childData = [];
@@ -618,6 +626,7 @@ class CovenantController extends Controller
     }
 
 	public function edit(Request $request) {
+        //dd('one-10');
 		$covenant_id = $request->input('id');
 		try {
                 $covenant = ComplianceCovenant::FindOrFail($covenant_id);
@@ -685,7 +694,7 @@ class CovenantController extends Controller
 	}
 
 	public function update(Request $request) {
-
+        //dd('one-11');
 		$submittedData = $request->all();
 		$covenantData = [];
         $childData = [];
@@ -752,33 +761,35 @@ class CovenantController extends Controller
 
 	public function view(Request $request) 
     { 
-        //dd($request);
+    
+    try {
         $id = $request->input('id');
-        
-      //  $id = '9313'; //$request->input('id');
-        //dd($id); //  compliances_covenants // 26616
-        try {
 
-
+        if (!$id) {
+            $id = $request->input('instance_id');
             $covenant = DB::table('compliances_covenants_instances as ci')
-            ->join('compliances_covenants as cc', 'ci.covenantId', '=', 'cc.id')
-            ->join('compliances as c', 'ci.complianceId', '=', 'c.id')
-            ->join('clients', 'c.clientReference', '=', 'clients.id')
-            ->leftJoin('users', 'ci.resolver', '=', 'users.id')
-            ->where('ci.id', $id)
-            ->first();
-        //   dd($covenant);
-        //     $covenant = DB::table('compliances')
-        //     ->join('compliances_covenants', 'compliances.id', '=', 'compliances_covenants.complianceId')
-        //     ->where('compliances_covenants.id',$id)
-        //     ->get(['compliances.docName','compliances.id as compliance_id','compliances_covenants.*'])
-        //     ->first();
+                ->join('compliances_covenants as cc', 'ci.covenantId', '=', 'cc.id')
+                ->join('compliances as c', 'ci.complianceId', '=', 'c.id')
+                ->join('clients', 'c.clientReference', '=', 'clients.id')                
+                ->where('ci.id', $id)
+                ->first();
+        } else {
+            $covenant = DB::table('compliances')
+                ->join('compliances_covenants', 'compliances.id', '=', 'compliances_covenants.complianceId')
+                ->where('compliances_covenants.id', $id)
+                ->select('compliances.docName', 'compliances.id as compliance_id', 'compliances_covenants.*')
+                ->first();
+        }
+
+        if (!$covenant) {
+            throw new \Exception("Covenant not found");
+        }
 
             $covenant_guide = DB::table('standard_covenants')
             ->where('sub_type',$covenant->subType)
             ->get(['covenant_parameters','child_covenant'])
             ->first();
-
+//dd($covenant);
             $covenantDetails = [];
             $covenantDetails['id'] = $covenant->id;
             $covenantDetails['complianceId'] = $covenant->complianceId;
@@ -787,6 +798,7 @@ class CovenantController extends Controller
             $covenantDetails['subType'] = $covenant->subType;
             $covenantDetails['description'] = $covenant->description;
             $covenantDetails['frequency'] = $covenant->frequency;
+            $covenantDetails['upload']= $covenant->uploads;
             $covenantDetails['comments'] = $covenant->comments;
             $covenantDetails['startDate'] = date("d-m-Y", strtotime($covenant->startDate));
             $covenantDetails['dueDate'] = date("d-m-Y", strtotime($covenant->dueDate));
@@ -829,12 +841,13 @@ class CovenantController extends Controller
 //dd($covenantDetails);
         $result['status'] = 'success';
         $result['covenant'] = $covenantDetails;
-        $result['instance'] = $covenantDetails;
+        // $result['instance'] = $covenantDetails;
 
         return json_encode($result);die;
     }
 
     public function timeline($id) {
+        //dd('one-13');
         $covenant_id = $id;
         $ComplianceController = new ComplianceController();
         $covenant_data = $ComplianceController->getComplianceCovenant($covenant_id);
@@ -845,6 +858,7 @@ class CovenantController extends Controller
     }
 
     public function saveTimeline(Request $request) {
+        //dd('one-14');
         /*$validated = $request->validate([
             'reminder.interval' => 'required',
         ]);*/
@@ -902,12 +916,14 @@ class CovenantController extends Controller
     }
 
     public function deleteReminder($instanceId){
+        //dd('one-15');
         if($instanceId) {
             $deletedRows = ComplianceReminder::where('instance_id', $instanceId)->delete();
         }
     }
 
     public function activeListPending(Request $request) {
+        //dd('one-16');
         //print_r($request->input());die;
         $totalFilteredRecord = $totalDataRecord = $draw_val = "";
         $columns_list = array(
@@ -1091,6 +1107,7 @@ class CovenantController extends Controller
     }
 
     public function activeList(Request $request) {
+       // dd('one-17');
         //print_r($request->input());die;
         $totalFilteredRecord = $totalDataRecord = $draw_val = "";
         $columns_list = array(
@@ -1291,7 +1308,7 @@ dd($types);
     }
 
     public function summary(Request $request) {
-       
+       // dd('one-18');
         $comp_cov = [];
         $viewOnly = 0;
         $isApprover = 0;
@@ -1318,6 +1335,7 @@ dd($types);
     }
 
     public function get_instance_status($status) {
+      //  dd('one-19');
         if($status == 0)
             return 'Not Started';
         else if($status == 1)
@@ -1337,6 +1355,7 @@ dd($types);
     }
 
     public function resolution(Request $request) {
+        
         $id = $request->input('id');
         try {
                 $tracking_data = DB::select("
@@ -1385,6 +1404,7 @@ dd($types);
     }
 
     public function approve(Request $request) {
+        //dd('one-21');
         //print_r($request->all());die;
         $selectedData = $request->input('selectedData');
         $comment = $request->input('comment');
@@ -1430,6 +1450,7 @@ dd($types);
     }
 
     public function approveActive(Request $request) {
+        //dd('one-22');
         //print_r($request->all());die;
         $selectedData = $request->input('selectedData');
         $comment = $request->input('comment');
@@ -1475,6 +1496,7 @@ dd($types);
     }
 
     public function submitForApproval(Request $request) {
+        //dd('one-23');
         $success = false;
         if($request->id && !empty($request->id)) {
             $instance = ComplianceCovenant::whereIn('id',$request->id);
@@ -1545,6 +1567,7 @@ dd($types);
     }
 
     public function submitForApprovalActive(Request $request) {
+        //dd('one-24');
         $success = false;
         $result = [];
         if($request->id && !empty($request->id)) {
@@ -1564,6 +1587,7 @@ dd($types);
     }
 
     public function sendEmail($subject,$mailContent, $toEmail,$ccemail='')
+   
     {        
         try {
             $mailsent = Mail::send(array(), array(), function ($message) use ($mailContent, $toEmail, $subject) {
