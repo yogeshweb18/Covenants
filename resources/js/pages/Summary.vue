@@ -57,6 +57,11 @@
           @close="closeModal"
           :selectedData="viewcompliance"
         />
+        <Modalview
+        v-show="isModalviewVisible"
+        @close="closeModalview"
+        :instance="viewCovenant"
+        />
     </div>
     <div>
       <Mark
@@ -78,6 +83,7 @@ import "datatables.net-rowgroup-dt/js/rowGroup.dataTables";
 import "datatables.net-rowgroup-dt/css/rowGroup.dataTables.min.css";
 import 'datatables.net-select';
 import $ from 'jquery';
+import Modalview from '../../../../../nova-components/Covenants/resources/js/pages/Instance.vue';
 import Modal from '../../../../../nova-components/Covenants/resources/js/pages/Resolution.vue';
 import Mark from '../../../../../nova-components/Covenants/resources/js/pages/MarkActive.vue';
 import axios from 'axios';
@@ -88,6 +94,7 @@ export default {
       viewCovenant: {},
       viewcompliance: {},
       isModalVisible: false,
+      isModalviewVisible:false,
       isMarkVisible: false,
       selectedData: [],
       approvalData: [],
@@ -96,6 +103,7 @@ export default {
   },
   components: {
     Modal,
+    Modalview,
     Mark
   },
   props: ['loadPage','viewOnly','isApprover'],
@@ -155,6 +163,11 @@ export default {
             order: [[6, 'asc']],
           
           rowCallback(row, data) {
+              $(row).on('click', '.view-placeholder',() => {
+              console.log('---------', JSON.stringify(data));
+              console.log('///'+data.id);
+                      self.newview(data.id);
+              });
               $(row).on('click', '.resolve-placeholder',() => {
                 self.view(data.id);
               });
@@ -284,7 +297,16 @@ export default {
             )
             .draw();
     },
-
+    newview(id) {
+        console.log('Logging ID:', id);
+        Nova.request().post('/nova-vendor/covenants/view',{'id':id})
+        .then(response => {
+            if(response.data.status == 'success') {
+              this.viewCovenant = response.data.covenant;
+              this.isModalviewVisible = true;
+            }            
+        });
+      },
     view(id) {
           Nova.request().post('/nova-vendor/covenants/resolution',{'id':id})
           .then(response => {
@@ -340,8 +362,11 @@ export default {
 
         closeModal() {
           this.isModalVisible = false;
+          
         },
-
+        closeModalview(){
+          this.isModalviewVisible =false;
+        },
         closeMark() {
           this.isMarkVisible = false;
         },
