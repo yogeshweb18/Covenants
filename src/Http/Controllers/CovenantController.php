@@ -752,15 +752,27 @@ class CovenantController extends Controller
 
 	public function view(Request $request) 
     { 
+        //dd($request);
+        $id = $request->input('id');
         
-        $id = '9313'; //$request->input('id');
+      //  $id = '9313'; //$request->input('id');
         //dd($id); //  compliances_covenants // 26616
         try {
-            $covenant = DB::table('compliances')
-            ->join('compliances_covenants', 'compliances.id', '=', 'compliances_covenants.complianceId')
-            ->where('compliances_covenants.id',$id)
-            ->get(['compliances.docName','compliances.id as compliance_id','compliances_covenants.*'])
+
+
+            $covenant = DB::table('compliances_covenants_instances as ci')
+            ->join('compliances_covenants as cc', 'ci.covenantId', '=', 'cc.id')
+            ->join('compliances as c', 'ci.complianceId', '=', 'c.id')
+            ->join('clients', 'c.clientReference', '=', 'clients.id')
+            ->leftJoin('users', 'ci.resolver', '=', 'users.id')
+            ->where('ci.id', $id)
             ->first();
+        //   dd($covenant);
+        //     $covenant = DB::table('compliances')
+        //     ->join('compliances_covenants', 'compliances.id', '=', 'compliances_covenants.complianceId')
+        //     ->where('compliances_covenants.id',$id)
+        //     ->get(['compliances.docName','compliances.id as compliance_id','compliances_covenants.*'])
+        //     ->first();
 
             $covenant_guide = DB::table('standard_covenants')
             ->where('sub_type',$covenant->subType)
@@ -1049,7 +1061,7 @@ class CovenantController extends Controller
                     // $actions .= "<ul style='padding: 0px;'><li><span style='width: 100%; display: flex; padding-top: 8px;'>"; 
                     $actions .= "<ul style='width: 100%; padding-top: 8px; padding-left: 0px;'>";
                     $actions .= "<li><span style='width: 100%; display: flex; padding-top: 8px;'>";
-                    $actions .= "<a class='point view-placeholder' title='View' onclick='newview('$id')'>View</a>";
+                    $actions .= "<a class='point view-placeholder' title='View'>View</a>";
                     $actions .= "</span></li>";                    
 
                     $actions .= "<div v-if='isApprover == 1' class='point'>";

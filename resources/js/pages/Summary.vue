@@ -299,7 +299,7 @@ export default {
     },
     newview(id) {
         console.log('Logging ID:', id);
-        Nova.request().post('/nova-vendor/covenants/view',{'id':id})
+        Nova.request().post('/nova-vendor/covenants/view',{'instance_id':id})
         .then(response => {
             if(response.data.status == 'success') {
               this.viewCovenant = response.data.covenant;
