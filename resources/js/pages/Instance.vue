@@ -66,7 +66,10 @@
                     <div class="mt-2 md:mt-0">
                         <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Upload <span class="text-red-500 text-sm">*</span></label>
                         <span class="answer">
-                            <a href="/download/{{instance.upload}}">Download File</a>
+                          <a href="{{ route('download.file', ['filename' => $covenantDetails['upload']]) }}">Download File</a>
+
+                          <a href="{{ route('download.file', ['filename' => instance.upload]) }}">Download File</a>
+
                         </span>
                     </div>
                 </div>
