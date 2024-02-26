@@ -11,6 +11,7 @@ use Axistrustee\ComplianceOverview\Http\Controllers\ComplianceController;
 use Illuminate\Support\Facades\Mail;
 use DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class CovenantController extends Controller
 {
@@ -758,6 +759,12 @@ class CovenantController extends Controller
 
         echo json_encode($result);die;
 	}
+
+    public function download($filename)
+{
+    $file = Storage::path($filename);
+    return response()->download($file);
+}
 
 	public function view(Request $request) 
     { 

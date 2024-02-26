@@ -30,3 +30,4 @@ Route::get('/timeline/{id}', 'Axistrustee\Covenants\Http\Controllers\CovenantCon
 Route::get('/summary', 'Axistrustee\Covenants\Http\Controllers\CovenantController@summary');
 Route::get('/pending-approval-active', 'Axistrustee\Covenants\Http\Controllers\CovenantController@PendingApprovalActive');
 Route::get('/approved-active', 'Axistrustee\Covenants\Http\Controllers\CovenantController@approvedActiveList');
+Route::get('/download/{filename}', 'Axistrustee\Covenants\Http\Controllers\CovenantController@download')->name('download.file');
