@@ -798,7 +798,7 @@ class CovenantController extends Controller
             $covenantDetails['subType'] = $covenant->subType;
             $covenantDetails['description'] = $covenant->description;
             $covenantDetails['frequency'] = $covenant->frequency;
-            $covenantDetails['upload']= $covenant->uploads;
+            $covenantDetails['upload']= str_replace('"', '', $covenant->uploads);
             $covenantDetails['comments'] = $covenant->comments;
             $covenantDetails['startDate'] = date("d-m-Y", strtotime($covenant->startDate));
             $covenantDetails['dueDate'] = date("d-m-Y", strtotime($covenant->dueDate));
