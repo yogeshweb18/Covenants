@@ -2977,7 +2977,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
       console.log('Logging ID:', id);
       Nova.request().post('/nova-vendor/covenants/view', {
-        'id': id
+        'instance_id': id
       }).then(function (response) {
         if (response.data.status == 'success') {
           _this2.viewCovenant = response.data.covenant;
