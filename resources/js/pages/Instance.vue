@@ -65,12 +65,8 @@
                 <div class="field-wrapper flex flex-col border-b border-gray-100 dark:border-gray-700 md:flex-row" index="0">
                     <div class="mt-2 md:mt-0">
                         <label for="name-create-organization-text-field" class="inline-block pt-2 leading-tight">Upload <span class="text-red-500 text-sm">*</span></label>
-                        <span class="answer">
-                          <a href="{{ route('download.file', ['filename' => $covenantDetails['upload']]) }}">Download File</a>
-
-                          <a href="{{ route('download.file', ['filename' => instance.upload]) }}">Download File</a>
-                          
-                          <a :href="'/download/' + instance.upload">Download File</a>
+                        <span class="answer">                         
+                          <a :href="'/admin/covenants/download/' + instance.upload">Download File</a>
                         </span>
                     </div>
                 </div>
