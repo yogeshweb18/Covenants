@@ -30,7 +30,7 @@
               </label>
             </div>
             <div class="mt-1 md:mt-0 px-6 md:px-8 w-full md:w-3/5 md:py-5">
-              <input type="text" placeholder="Document Name" v-model="covenant.description" class="w-full form-control form-input form-input-bordered" id="name-create-docName-text-field" name="docName" dusk="docName" list="name-list" required="required"><!----><!----><!---->
+              <input type="text" placeholder="Document Name" v-model="covenant.description" class="w-full form-control form-input form-input-bordered" id="name-create-docName-text-field" name="docName" dusk="docName" list="name-list" required="required" pattern='^[a-zA-Z0-9.,\/\" \-]+$'><!----><!----><!---->
             </div>
           </div>
           <div class="field-wrapper flex flex-col border-b border-gray-100 dark:border-gray-700 md:flex-row" index="0">
@@ -39,7 +39,7 @@
               </label>
             </div>
             <div class="mt-1 md:mt-0 px-6 md:px-8 w-full md:w-3/5 md:py-5">
-              <input type="text" v-model="covenant.comments" class="w-full form-control form-input form-input-bordered" id="name-create-docName-text-field" name="docName" dusk="docName" list="name-list"><!----><!----><!---->
+              <input type="text" v-model="covenant.comments" class="w-full form-control form-input form-input-bordered" id="name-create-docName-text-field" name="docName" dusk="docName" list="name-list" pattern='^[a-zA-Z0-9.,\/\" \-]+$'><!----><!----><!---->
             </div>
           </div>
           <div class="field-wrapper flex flex-col border-b border-gray-100 dark:border-gray-700 md:flex-row" index="0">

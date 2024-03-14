@@ -3780,8 +3780,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "docName",
     dusk: "docName",
     list: "name-list",
-    required: "required",
-    pattern: "^[a-zA-Z0-9.,\\/\\\" \\-]+$"
+    required: "required"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.covenant.description]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
@@ -3791,8 +3790,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "name-create-docName-text-field",
     name: "docName",
     dusk: "docName",
-    list: "name-list",
-    pattern: "^[a-zA-Z0-9.,\\/\\\" \\-]+$"
+    list: "name-list"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.covenant.comments]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "w-full form-control form-input-bordered select-box",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
